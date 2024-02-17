@@ -1,0 +1,23 @@
+{
+    "response": "ran",
+    "data": [
+        {
+            "id": 1,
+            "title": "Apple Watch 4",
+            "price": "5000",
+            "image": "/assets/image_0.png",
+            "details": "",
+            "company": "Apple",
+            "category": "Watch"
+        },
+        {
+            "id": 2,
+            "title": "Apple Macbook Pro",
+            "price": "148000",
+            "image": "/assets/image_0.png",
+            "details": "13 inch 2.4 2019 Intel core i5 DDR3 8 GB SSD 256 GB",
+            "company": "Apple",
+            "category": "Laptop"
+        }
+    ]
+}
