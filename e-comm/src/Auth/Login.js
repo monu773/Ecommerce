@@ -19,7 +19,7 @@ const Login = () => {
   const handleLogin = async () => {
     
     setError(Validation(password));
-    setError(validation(email));
+    setError(Validation(email));
     let result = await fetch("http://localhost:5000/login", {
       method: "post",
       body: JSON.stringify({ email, password }),

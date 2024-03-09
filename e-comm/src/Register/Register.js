@@ -97,9 +97,9 @@ const Register = () => {
   }, [file]);
 
   const handleRegister = async () => {
-    setError(validation(name));
-    setError(validation(password));
-    setError(validation(email));
+    setError(Validation(name));
+    setError(Validation(password));
+    setError(Validation(email));
 
 
    try {
