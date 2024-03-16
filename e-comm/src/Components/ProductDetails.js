@@ -40,7 +40,7 @@ const ProductDetails = () => {
   const { user } = useUser();
 
   const cartId = productId?.id;
-  const userId = user?.user._id;
+  const userId = user?.user?._id;
 
   const [open, setOpen] = useState(false);
 
@@ -86,7 +86,7 @@ const ProductDetails = () => {
 
   const deleteProduct = async () => {
     await axios
-      .delete(`http://localhost:5000/product/${productId.id}`, {
+      .delete(`http://localhost:5000/product/${productId?.id}`, {
         headers: {
           method: "delete",
           authorization: `bearer ${
@@ -145,6 +145,51 @@ const ProductDetails = () => {
     getProductDetails();
     getCart();
   }, []);
+
+
+  const [book, setBook] = useState({
+		name: "The Fault In Our Stars",
+		author: "John Green",
+		img: "https://images-na.ssl-images-amazon.com/images/I/817tHNcyAgL.jpg",
+		price: 250,
+	});
+
+	const initPayment = (data) => {
+		const options = {
+			key: "YOUR_RAZORPAY_KEY",
+			amount: data.amount,
+			currency: data.currency,
+			name: productData?.name,
+			description: "Test Transaction",
+			image: productData?.store,
+			order_id: data.id,
+			handler: async (response) => {
+				try {
+					const verifyUrl = "http://localhost:5000/verify";
+					const { data } = await axios.post(verifyUrl, response);
+					console.log(data);
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			theme: {
+				color: "#3399cc",
+			},
+		};
+		const rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	};
+
+	const handlePayment = async () => {
+		try {
+			const orderUrl = "http://localhost:5000/orders";
+			const { data } = await axios.post(orderUrl, { amount: productData?.price });
+			console.log(data);
+			initPayment(data.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
   return (
     <>
@@ -309,7 +354,7 @@ const ProductDetails = () => {
                           fontSize: "18px",
                           fontWeight: 600,
                         }}
-                        disabled={cart?.length !== 0 ? true : false}
+                        // disabled={cart?.length !== 0 ? true : false}
                         onClick={addCart}
                       >
                         Add to Cart
@@ -333,7 +378,7 @@ const ProductDetails = () => {
                 key="submit"
                 type="primary"
                 loading={loading}
-                onClick={handleOk}
+                onClick={handlePayment}
               >
                 Submit
               </Button>,

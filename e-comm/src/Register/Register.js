@@ -18,7 +18,6 @@ import {
 import app from "../firebase";
 import axios from "axios";
 import { useUser } from "../Context/userContext";
-import Validation from "./Validation";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +25,6 @@ const Register = () => {
   const [name, setName] = useState("");
   const [imageProgress, setImageProgress] = useState("");
   const { saveUser } = useUser();
-  const [errors, setError] = useState({})
 
   const inputFile = useRef(null);
 
@@ -97,12 +95,6 @@ const Register = () => {
   }, [file]);
 
   const handleRegister = async () => {
-    setError(Validation(name));
-    setError(Validation(password));
-    setError(Validation(email));
-
-
-   try {
     let result = await fetch("http://localhost:5000/register", {
       method: "post",
       body: JSON.stringify({ name, email, store, password }),
@@ -117,9 +109,6 @@ const Register = () => {
     } else {
       alert("Please enter correct details");
     }
-   } catch (error) {
-    Validation(error);
-   }
   };
 
   console.log(store);
@@ -258,8 +247,6 @@ const Register = () => {
                   height: "40px",
                 }}
               />
-                    {errors.name && <p style={{color: "red", fontsize: "13px"}}>{errors.name}</p>}
-
               <Input
                 type={"text"}
                 className="inputBox"
@@ -274,8 +261,6 @@ const Register = () => {
                   marginTop: 0,
                 }}
               />
-                    {errors.email && <p style={{color: "red", fontsize: "13px"}}>{errors.email}</p>}
-
               <Input.Password
                 // type={"password"}
                 className="inputBox"
@@ -293,8 +278,6 @@ const Register = () => {
                   marginTop: 0,
                 }}
               />
-                    {errors.password && <p style={{color: "red", fontsize: "13px"}}>{errors.password}</p>}
-
               <Button
                 type="primary"
                 className="appButton"

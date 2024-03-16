@@ -67,7 +67,7 @@ export default function Dash() {
                     hoverable
                     bordered={false}
                     style={{
-                      width: "384px",
+                      // width: "384px",
                       display: "flex",
                       alignItems: "center",
                       borderRadius: "12px",
@@ -94,7 +94,7 @@ export default function Dash() {
                     >
                       <img
                         width={"full"}
-                        height={"175px"}
+                        height={"125px"}
                         alt="image0"
                         src="/assets/image_1.png"
                         style={{
@@ -156,7 +156,7 @@ export default function Dash() {
                     hoverable
                     bordered={false}
                     style={{
-                      width: "384px",
+                      // width: "384px",
                       display: "flex",
                       alignItems: "center",
                       borderRadius: "12px",
@@ -175,7 +175,7 @@ export default function Dash() {
                     >
                       <img
                         width={"full"}
-                        height={"175px"}
+                        height={"125px"}
                         alt="image0"
                         src="/assets/image_3.png"
                         style={{
@@ -238,7 +238,7 @@ export default function Dash() {
                     hoverable
                     bordered={false}
                     style={{
-                      width: "384px",
+                      // width: "384px",
                       display: "flex",
                       alignItems: "center",
                       borderRadius: "12px",
@@ -257,7 +257,7 @@ export default function Dash() {
                     >
                       <img
                         width={"full"}
-                        height={"175px"}
+                        height={"125px"}
                         alt="image0"
                         src="/assets/image_2.png"
                         style={{
@@ -319,7 +319,7 @@ export default function Dash() {
                     hoverable
                     bordered={false}
                     style={{
-                      width: "384px",
+                      // width: "384px",
                       display: "flex",
                       alignItems: "center",
                       borderRadius: "12px",
@@ -338,7 +338,7 @@ export default function Dash() {
                     >
                       <img
                         width={"full"}
-                        height={"175px"}
+                        height={"125px"}
                         alt="image0"
                         src="/assets/image_0.png"
                         style={{
